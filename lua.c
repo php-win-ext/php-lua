@@ -867,8 +867,11 @@ PHP_MINIT_FUNCTION(lua) {
 	php_lua_closure_register();
 
 	INIT_CLASS_ENTRY(ce, "LuaException", NULL);
-
+#if PHP_VERSION_ID >= 80500
 	lua_exception_ce = zend_register_internal_class_ex(&ce, zend_ce_exception);
+#else
+	lua_exception_ce = zend_register_internal_class_ex(&ce, zend_exception_get_default());
+#endif
 
 	return SUCCESS;
 }
