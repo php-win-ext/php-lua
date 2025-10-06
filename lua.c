@@ -868,7 +868,7 @@ PHP_MINIT_FUNCTION(lua) {
 
 	INIT_CLASS_ENTRY(ce, "LuaException", NULL);
 
-	lua_exception_ce = zend_register_internal_class_ex(&ce, zend_exception_get_default());
+	lua_exception_ce = zend_register_internal_class_ex(&ce, zend_ce_exception);
 
 	return SUCCESS;
 }
